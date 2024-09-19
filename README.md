@@ -9,7 +9,7 @@ Each data point is the time in hours a student spent studying or doing homework 
 
 #### Results
 
-  Because of the limited sample size a typical frequentist approach will not yeild any significant results.  Therefore we will continue with a bayesian apprach.  Using the normal model with a conjugate prior we can obtain the posterior means for each school as approximately 9.29,6.95, and 7.81 hours spent studying per student.
+  Because of the limited sample size a typical frequentist approach will not yield any significant results.  Therefore we will continue with a bayesian apprach.  Using the normal model with a conjugate prior we can obtain the posterior means for each school as approximately 9.29,6.95, and 7.81 hours spent studying per student.
  
   To create 95% confidence intervals for these means we will implement Monte Carlo precedure (for each school) drawing 1000 random samples from our distributions and then view the 0.025 and 0.95 quantiles of the resulting distribution.  the confidence interval for school 1 does not overlap with any of the other schools, so it is clear that school has a significantly higher average time spent studying than the other.  The other school means confidence intervals overlap, so we will continue to find probabilities for which school mean is greater.
   
