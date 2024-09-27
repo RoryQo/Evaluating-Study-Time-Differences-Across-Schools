@@ -2,7 +2,7 @@
 
 #### Data
 Each data point is the time in hours a student spent studying or doing homework during an exam period
-
+ 
 + School 1 has 25 observations
 + School 2 has 23 observations
 + School 3 has 20 observations
