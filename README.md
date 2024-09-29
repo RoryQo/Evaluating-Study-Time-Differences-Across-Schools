@@ -1,16 +1,36 @@
 # R-School-Differences-Bayesian-Analysis
 
-#### Data
-Each data point is the time in hours a student spent studying or doing homework during an exam period
- 
-+ School 1 has 25 observations
-+ School 2 has 23 observations
-+ School 3 has 20 observations
+## Table of Contents
+1. [Data](#data)
+2. [Results](#results)
+3. [Analysis Approach](#analysis-approach)
+4. [Conclusion](#conclusion)
 
-#### Results
+## Data
+The dataset consists of the time (in hours) that students from three different schools spent studying or doing homework during an exam period:
+- **School 1:** 25 observations
+- **School 2:** 23 observations
+- **School 3:** 20 observations
 
-  Because of the limited sample size a typical frequentist approach will not yield any significant results.  Therefore we will continue with a bayesian approach.  Using the normal model with a conjugate prior we can obtain the posterior means for each school as approximately 9.29,6.95, and 7.81 hours spent studying per student.
- 
-  To create 95% confidence intervals for these means we will implement Monte Carlo procedure (for each school) drawing 1000 random samples from our distributions and then viewing the 0.025 and 0.95 quantiles of the resulting distribution.  the confidence interval for school 1 does not overlap with any of the other schools, so it is clear that school has a significantly higher average time spent studying than the other.  The other school means confidence intervals overlap, so we will continue to find probabilities for which school mean is greater.
-  
-  Theta 3 is less than theta 2, which is less than 1, with a probability of 0.4814 (this is the most likely outcome).  However, the probability that theta 2 is less than 3 is less than 1 is 0.4719.  The probability that theta 3 is less than theta 2 is 1% greater than the compliment based on all outcomes.
+## Results
+Given the limited sample sizes, typical frequentist methods may not yield significant results. Therefore, we adopt a Bayesian approach. Using a normal model with a conjugate prior, we calculate the posterior means for each school, which are approximately:
+- **School 1:** 9.29 hours
+- **School 2:** 6.95 hours
+- **School 3:** 7.81 hours
+
+To construct 95% confidence intervals for these means, we implement a Monte Carlo procedure, drawing 1,000 random samples from the distributions. The confidence interval for School 1 does not overlap with those of the other schools, indicating a significantly higher average study time. In contrast, the confidence intervals for Schools 2 and 3 overlap, prompting further analysis of probabilities concerning which school's mean is greater.
+
+The probability that the mean study time for School 3 is less than that of School 2, which is in turn less than 1, is approximately 0.4814 (the most likely outcome). The probability that the mean for School 2 is less than that of School 3 is 0.4719. Additionally, the probability that School 3 has a lower mean than School 2 is slightly greater than the complementary probability based on all outcomes.
+
+## Analysis Approach
+1. **Posterior Means Calculation:** 
+   - Use Bayesian methods to calculate the posterior means for each school based on prior distributions and observed data.
+
+2. **95% Confidence Intervals:**
+   - Employ Monte Carlo simulations to derive confidence intervals for the means and standard deviations of study times for each school.
+
+3. **Probability Comparisons:**
+   - Assess the probabilities of the relationships between the means of different schools to determine which school has a statistically greater average study time.
+
+## Conclusion
+The Bayesian analysis reveals distinct differences in average study times among the schools, with School 1 significantly outpacing the others. Further investigation into the overlapping confidence intervals for Schools 2 and 3 highlights the nuanced relationships between their average study times, suggesting that while School 1 is clearly superior, the competition between Schools 2 and 3 remains closely matched.
