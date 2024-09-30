@@ -1,6 +1,6 @@
 # R-School-Differences-Bayesian-Analysis
 
-## Table of Contents
+## Table of Contents 
 1. [Data](#data)
 2. [Results](#results)
 3. [Analysis Approach](#analysis-approach)
