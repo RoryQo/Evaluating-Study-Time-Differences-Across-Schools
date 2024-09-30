@@ -1,4 +1,4 @@
-# R Evaluating Study Time Differences Across Schools
+#  Evaluating Study Time Differences Across Schools
 
 ## Table of Contents 
 1. [Data](#data)
