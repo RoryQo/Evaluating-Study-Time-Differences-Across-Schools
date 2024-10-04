@@ -17,10 +17,27 @@ Given the limited sample sizes, typical frequentist methods may not yield signif
 - **School 1:** 9.29 hours
 - **School 2:** 6.95 hours
 - **School 3:** 7.81 hours
+```
+# Using monte carlo simulation for all three schools
+# Mu0, var0, k0, v0 given
+mu0 <- 5
+var0 <- 4
+k0 <- 1
+v0 <- 2
+#posterior mean for s1
+n1 <- length(s1)
+y_bar1 <- mean(s1)
+var1 <- var(s1)
+mu_1 <- (k0 * mu0 + n1 * y_bar1)/(k0 + n1)
+```
 
 To construct 95% confidence intervals for these means, we implement a Monte Carlo procedure, drawing 1,000 random samples from the distributions. The confidence interval for School 1 does not overlap with those of the other schools, indicating a significantly higher average study time. In contrast, the confidence intervals for Schools 2 and 3 overlap, prompting further analysis of probabilities concerning which school's mean is greater.
 
 The probability that the mean study time for School 3 is less than that of School 2, which is in turn less than 1, is approximately 0.4814 (the most likely outcome). The probability that the mean for School 2 is less than that of School 3 is 0.4719. Additionally, the probability that School 3 has a lower mean than School 2 is slightly greater than the complementary probability based on all outcomes.
+
+<br>
+<img src="https://github.com/RoryQo/R-Evaluating-Study-Time-Differences-Across-Schools/raw/main/Graph1.jpg" alt="Study Time Differences Graph" style="width: 900px;" />
+
 
 ## Analysis Approach
 1. **Posterior Means Calculation:** 
