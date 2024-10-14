@@ -1,7 +1,7 @@
 #  Evaluating Study Time Differences Across Schools
  
 ## Table of Contents  
-1. [Data](#data)
+1. [Data](#data) 
 2. [Results](#results) 
 3. [Analysis Approach](#analysis-approach)
 4. [Conclusion](#conclusion)
