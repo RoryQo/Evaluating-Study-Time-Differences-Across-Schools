@@ -50,7 +50,7 @@ mu_1 <- (k0 * mu0 + n1 * y_bar1)/(k0 + n1)
    - Assess the probabilities of the relationships between the means of different schools to determine which school has a statistically greater average study time.
 <br>
 
-<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/Graph2.jpg" alt="Study Time Differences Graph 2" style="width: 300px;" />
+<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/graph2.jpg" alt="Study Time Differences Graph 2" style="width: 300px;" />
 
 
 ## Conclusion
