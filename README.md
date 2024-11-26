@@ -23,7 +23,7 @@ To construct 95% confidence intervals for these means, we implement a Monte Carl
 The probability that the mean study time for School 3 is less than that of School 2, which is in turn less than 1, is approximately 0.4814 (the most likely outcome). The probability that the mean for School 2 is less than that of School 3 is 0.4719. Additionally, the probability that School 3 has a lower mean than School 2 is slightly greater than the complementary probability based on all outcomes.
 
 <br>
-<img src="https://github.com/RoryQo/R-Evaluating-Study-Time-Differences-Across-Schools/raw/main/Graph1.jpg" alt="Study Time Differences Graph" style="width: 900px;" />
+<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/Graph1.jpg" alt="Study Time Differences Graph" style="width: 900px;" />
 
 
 ## Analysis Approach
@@ -50,7 +50,7 @@ mu_1 <- (k0 * mu0 + n1 * y_bar1)/(k0 + n1)
    - Assess the probabilities of the relationships between the means of different schools to determine which school has a statistically greater average study time.
 <br>
 
-<img src="https://github.com/RoryQo/R-Evaluating-Study-Time-Differences-Across-Schools/raw/main/graph2.jpg" alt="Study Time Differences Graph 2" style="width: 300px;" />
+<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/Graph2.jpg" alt="Study Time Differences Graph 2" style="width: 300px;" />
 
 
 ## Conclusion
