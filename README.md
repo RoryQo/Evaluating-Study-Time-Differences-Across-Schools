@@ -4,7 +4,7 @@
 1. [Data](#data)  
 2. [Results](#results)  
 3. [Analysis Approach](#analysis-approach) 
-4. [Conclusion](#conclusion) 
+4. [Conclusion](#conclusion)  
 
 ## Data
 The dataset consists of the time (in hours) that students from three different schools spent studying or doing homework during an exam period:
