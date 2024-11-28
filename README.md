@@ -9,7 +9,7 @@
 ## Data
 The dataset consists of the time (in hours) that students from three different schools spent studying or doing homework during an exam period:
 - **School 1:** 25 observations
-- **School 2:** 23 observations
+- **School 2:** 23 observations 
 - **School 3:** 20 observations
 
 ## Results
