@@ -95,7 +95,7 @@ theta1_postsample <- rnorm(10000, mu_1, sqrt(s1_postsample/(n1 + k0)))
 </p>
 
 #### Posterior Predictive Check - Graph 1: School 1
-To assess the quality of the model fit to School 1's data, we plot the posterior predictive check alongside the observed data for School 1.
+To assess the quality of the model fit to School 1's data, we plot the posterior predictive check alongside the observed data for School 1.  All three schools appear to have well fit models based on our PPCs.
 
 ```
 # Generate posterior predictive samples for School 1 (mean and variance)
@@ -167,10 +167,9 @@ School 3: 7.81 hours
 
 We implemented a Monte Carlo procedure to construct 95% confidence intervals for these means, drawing 1,000 random samples from the distributions. While the confidence intervals for the means overlap between all Schools, the probability analysis indicates a clearer picture.
 
-After computing the probabilities, we find that there is almost a 95% chance that School 1 has the largest average study time. Furthermore, there is about a 2% higher likelihood that School 2 has a larger average study time than School 3. If we were to rank the schools based on the probabilities, the most likely ordering of the schools would be School 1 > School 2 > School 3, with an approximately 2% chance that School 2 has a larger average study time than School 3.
-While schools 2 and 3 are still very close together, we can establish school 1 is most likely the school with the highest average study time.
+After computing the probabilities, we find that there is almost a 95% chance that School 1 has the largest average study time. Furthermore, there is about a 2% higher likelihood that School 2 has a larger average study time than School 3. If we were to rank the schools based on the probabilities, the most likely ordering of the schools would be School 1 > School 2 > School 3. School 2 has a larger average study time than School 3 52% of the time, so it is approximately 2% more likely to have higher study times than school 3. While schools 2 and 3 are still very close together, we can establish school 1 is most likely the school with the highest average study time.
 
 ## Conclusion
-The Bayesian analysis provides a more nuanced understanding of the study time differences across schools. School 1 most likely has a higher average study time than the other two schools. However, Schools 2 and 3 have very similar average study times, and there is substantial uncertainty about which school has the highest mean. The Bayesian methods used here—especially the posterior distributions, credible intervals, and probability comparisons—allow us to incorporate uncertainty and make more informed inferences about the data.
+The Bayesian analysis provides a more nuanced understanding of the study time differences across schools. School 1 most likely has a higher average study time than the other two schools. However, Schools 2 and 3 have very similar average study times. The Bayesian methods used here—especially the posterior distributions, credible intervals, and probability comparisons—allow us to incorporate uncertainty and make more informed inferences about the data.
 
 By employing a Bayesian framework, we are able to account for prior knowledge and obtain more reliable estimates, especially in the context of small sample sizes. This methodology allows for a more robust analysis and deeper insights into the relationships between the study times of the different schools.
