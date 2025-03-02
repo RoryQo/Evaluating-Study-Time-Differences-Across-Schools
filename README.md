@@ -1,57 +1,112 @@
-#  Evaluating Study Time Differences Across Schools       
-      
-## Table of Contents            
-1. [Data](#data)   
-2. [Results](#results)   
-3. [Analysis Approach](#analysis-approach) 
+# Evaluating Study Time Differences Across Schools - Bayesian Analysis
+
+## Table of Contents  
+1. [Data](#data)  
+2. [Analysis Methodology](#analysis-methodology)  
+3. [Results](#results)  
 4. [Conclusion](#conclusion)  
 
 ## Data
 The dataset consists of the time (in hours) that students from three different schools spent studying or doing homework during an exam period:
 - **School 1:** 25 observations
-- **School 2:** 23 observations 
+- **School 2:** 23 observations
 - **School 3:** 20 observations
 
+The goal of this analysis is to evaluate and compare the average study time across these three schools. Given the relatively small sample sizes, Bayesian methods are employed to incorporate prior knowledge and account for uncertainty in the estimates of average study times.
+
+## Analysis Methodology
+
+### 1. **Bayesian Framework**
+Bayesian analysis is used to estimate the posterior distributions of the average study times for each school. The key idea behind Bayesian inference is that we update our prior beliefs about a parameter (in this case, the average study time) using observed data to obtain a posterior distribution. This distribution incorporates both the prior beliefs and the observed data, allowing us to make more informed inferences about the parameter.
+
+- **Prior Distribution:**
+  A conjugate normal prior is assumed for the means of the study times. This means that the prior distribution for the average study time in each school is a normal distribution, with a known mean and variance.
+  
+  We also assume a conjugate prior for the variance, which is an inverse gamma distribution. This allows the posterior distribution for the mean to also be normal, and the posterior distribution for the variance to be an inverse gamma.
+
+  The priors are chosen based on reasonable assumptions:
+  - Mean prior  $\mu_0 = 5$ hours (a rough initial belief about the average study time).
+  - Variance prior $\text{var}_0 = 4$ (reflecting a moderate degree of variability in the study times).
+  - Degrees of freedom  $\nu_0 = 2$ and scale parameter $\( k_0 = 1 \)$ , which represent the strength of the prior.
+
+- **Likelihood Function:**
+  The likelihood is assumed to be normally distributed, representing the data's uncertainty in terms of the sample mean and variance. The observed data from each school informs us about the sample mean $\bar{y}$ and sample variance $\ s^2$.
+
+  The likelihood function combines the prior and the observed data using Bayes' theorem to calculate the posterior distribution of the mean study time for each school.
+
+### 2. **Posterior Means Calculation**
+Bayesian methods combine the prior distribution with the data to calculate the posterior distribution of the mean study time for each school. The posterior mean is the expected value of the parameter given the data, which represents the best estimate of the average study time after incorporating both the prior beliefs and the observed data.
+
+The formula for calculating the posterior mean for each school is:
+```math
+\mu_{\text{posterior}} = \frac{k_0 \mu_0 + n \bar{y}}{k_0 + n}
+```
+
+where:
+- $\mu_0$ is the prior mean.
+- $n$ is the sample size for the school.
+- $\bar{y}$ is the sample mean for the school.
+- $k_0$ is the prior weight (which determines how much the prior influences the posterior).
+
+### 3. **95% Credible Intervals (Monte Carlo Simulation)**
+To quantify the uncertainty in the posterior mean estimates, we use Monte Carlo simulations to generate posterior samples. This is done by sampling from the posterior distributions of the mean and variance.
+
+- **Generating Posterior Samples:** 
+  For each school, the posterior distribution for the mean is a normal distribution with a mean equal to the posterior mean $\mu_{\text{posterior}}$, and a variance equal to the posterior variance (which depends on the observed data and the prior).
+
+  - **Posterior Variance:** 
+    The posterior variance is calculated using the formula:
+$$\sigma^2_{\text{posterior}} = \frac{1}{n + k_0}$$
+
+    where $( n )$ is the sample size for the school, and $k_0$ is the prior weight.
+
+
+
+  - **Monte Carlo Sampling:**
+    10,000 posterior samples of the mean and variance are drawn using the normal and gamma distributions. These samples are then used to compute the 95% credible intervals by calculating the 2.5th and 97.5th percentiles of the posterior samples for each school.
+
+    This provides a range of plausible values for each school’s mean study time, taking into account both the prior beliefs and the observed data.
+
+<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/Graph1.jpg" alt="Posterior Predictive Check for School 1" style="width: 600px;" />
+
+
+#### Posterior Predictive Check - Graph 1: School 1
+To assess the quality of the model fit to School 1's data, we plot the posterior predictive check alongside the observed data for School 1.
+
+### 4. **Probability of Ordering the Means**
+In addition to calculating the posterior means and credible intervals, we are also interested in comparing the means of the schools. Specifically, we calculate the probabilities of different orderings of the means for the schools.
+
+- **Pairwise Probability Calculations:**
+  We compute the probabilities that one school has a higher mean study time than another, based on the posterior samples. For example, we calculate the probability that the mean study time for School 1 is greater than that of School 2, and the probability that the mean for School 3 is greater than School 2.
+
+  We do this by counting the number of times that a given ordering occurs in the posterior samples and dividing by the total number of samples. This allows us to quantify the likelihood of different orderings of the means.
+
+#### Posterior Predictive Check - Graph 2: School 2
+A similar analysis is done for School 2, and the posterior predictive check is visualized for comparison:
+![Posterior Predictive Check for School 2](https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/graph2.jpg)
+
+### 5. **Posterior Predictive Check for School 3**
+Similarly, the posterior predictive check is performed for School 3, showing the comparison between observed and simulated data.
+![Posterior Predictive Check for School 3](https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/Graph3.jpg)
+
+### 6. **Bayesian Inference Summary**
+After conducting the above steps, we summarize the findings:
+- **Posterior Means** provide a point estimate of the average study time for each school.
+- **95% Credible Intervals** give a range of plausible values for the means.
+- **Pairwise Comparison Probabilities** offer insights into how likely one school’s average study time is to be greater than another.
+- **Posterior Predictive Checks** help us assess the quality of our model fit to the observed data.
+
 ## Results
-Given the limited sample sizes, typical frequentist methods may not yield significant results. Therefore, we adopt a Bayesian approach. Using a normal model with a conjugate prior, we calculate the posterior means for each school, which are approximately:
+Based on the Bayesian analysis, the posterior means for the schools are as follows:
 - **School 1:** 9.29 hours
 - **School 2:** 6.95 hours
 - **School 3:** 7.81 hours
 
-To construct 95% confidence intervals for these means, we implement a Monte Carlo procedure, drawing 1,000 random samples from the distributions. The confidence interval for School 1 does not overlap with those of the other schools, indicating a significantly higher average study time. In contrast, the confidence intervals for Schools 2 and 3 overlap, prompting further analysis of probabilities concerning which school's mean is greater.
+The 95% credible intervals for the means of School 1 and the other schools do not overlap, indicating a statistically significant difference between School 1 and the others. However, the confidence intervals for Schools 2 and 3 overlap, suggesting no significant difference between these two schools.
 
-The probability that the mean study time for School 3 is less than that of School 2, which is in turn less than 1, is approximately 0.4814 (the most likely outcome). The probability that the mean for School 2 is less than that of School 3 is 0.4719. Additionally, the probability that School 3 has a lower mean than School 2 is slightly greater than the complementary probability based on all outcomes.
-
-<br>
-<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/Graph1.jpg" alt="Study Time Differences Graph" style="width: 900px;" />
-
-
-## Analysis Approach
-1. **Posterior Means Calculation:** 
-   - Use Bayesian methods to calculate the posterior means for each school based on prior distributions and observed data.
-```
-# Using monte carlo simulation for all three schools
-# Mu0, var0, k0, v0 given
-mu0 <- 5
-var0 <- 4
-k0 <- 1
-v0 <- 2
-#posterior mean for s1
-n1 <- length(s1)
-y_bar1 <- mean(s1)
-var1 <- var(s1)
-mu_1 <- (k0 * mu0 + n1 * y_bar1)/(k0 + n1)
-```
-
-2. **95% Confidence Intervals:**
-   - Employ Monte Carlo simulations to derive confidence intervals for the means and standard deviations of study times for each school.
-
-3. **Probability Comparisons:**
-   - Assess the probabilities of the relationships between the means of different schools to determine which school has a statistically greater average study time.
-<br>
-
-<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/graph2.jpg" alt="Study Time Differences Graph 2" style="width: 300px;" />
-
+Additionally, the probabilities calculated from the posterior distributions show that School 3’s average study time is slightly more likely to be lower than School 2’s, with a probability of 0.4814.
 
 ## Conclusion
-The Bayesian analysis reveals distinct differences in average study times among the schools, with School 1 significantly outpacing the others. Further investigation into the overlapping confidence intervals for Schools 2 and 3 highlights the nuanced relationships between their average study times, suggesting that while School 1 is clearly superior, the competition between Schools 2 and 3 remains closely matched.
+The Bayesian analysis provides a more nuanced understanding of the study time differences across schools. School 1 clearly has a significantly higher average study time than the other two schools. However, Schools 2 and 3 have very similar average study times, and there is substantial uncertainty about which school has the highest mean. The Bayesian methods used here—especially the posterior distributions, credible intervals, and probability comparisons—allow us to incorporate uncertainty and make more informed inferences about the data.
+
+By employing a Bayesian framework, we are able to account for prior knowledge and obtain more reliable estimates, especially in the context of small sample sizes. This methodology allows for a more robust analysis and deeper insights into the relationships between the study times of the different schools.
