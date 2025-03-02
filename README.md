@@ -1,10 +1,35 @@
 # Evaluating Study Time Differences Across Schools - Bayesian Analysis
 
-## Table of Contents  
-1. [Data](#data)  
-2. [Analysis Methodology](#analysis-methodology)  
-3. [Results](#results)  
-4. [Conclusion](#conclusion)  
+<table align="center">
+  <tr>
+    <td colspan="2" align="center" style="background-color: white; color: black;"><strong>Table of Contents</strong></td>
+  </tr>
+  <tr>
+    <td style="background-color: white; color: black; padding: 10px;"><a href="#data" style="color: black;">Data</a></td>
+    <td style="background-color: gray; color: black; padding: 10px;"><a href="#4-posterior-predictive-check" style="color: black;">Posterior Predictive Checks</a></td>
+  </tr>
+  <tr>
+    <td style="background-color: gray; color: black; padding: 10px;"><a href="#1-bayesian-framework" style="color: black;">Bayesian Framework</a></td>
+    <td style="background-color: white; color: black; padding: 10px;"><a href="#5-probability-of-ordering-the-means" style="color: black;">Probability of Ordering the Means</a></td>
+  </tr>
+  <tr>
+    <td style="background-color: white; color: black; padding: 10px;"><a href="#2-posterior-means-calculation" style="color: black;">Posterior Means Calculation</a></td>
+    <td style="background-color: gray; color: black; padding: 10px;"><a href="#6-bayesian-inference-summary" style="color: black;">Bayesian Inference Summary</a></td>
+  </tr>
+  <tr>
+    <td style="background-color: gray; color: black; padding: 10px;"><a href="#3-95-credible-intervals-monte-carlo-simulation" style="color: black;">95% Credible Intervals</a></td>
+    <td style="background-color: white; color: black; padding: 10px;"><a href="#results" style="color: black;">Results</a></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" style="background-color: gray; color: black; padding: 10px;">
+      <a href="#conclusion" style="color: black;">Conclusion</a>
+    </td>
+  </tr>
+</table>
+
+
+
+
 
 ## Data
 The dataset consists of the time (in hours) that students from three different schools spent studying or doing homework during an exam period:
@@ -94,6 +119,8 @@ theta1_postsample <- rnorm(10000, mu_1, sqrt(s1_postsample/(n1 + k0)))
 <img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/Graph1.jpg" alt="Posterior Predictive Check for School 1" style="width: 775px;" />
 </p>
 
+### 4. **Posterior Predictive Check**
+
 #### Posterior Predictive Check - Graph 1: School 1
 To assess the quality of the model fit to School 1's data, we plot the posterior predictive check alongside the observed data for School 1.  All three schools appear to have well fit models based on our PPCs.
 
@@ -115,7 +142,7 @@ A similar analysis is done for School 2, and the posterior predictive check is v
 </p>
 
 
-### 5. **Posterior Predictive Check for School 3**
+#### **Posterior Predictive Check - Graph 3: School 3**
 Similarly, the posterior predictive check is performed for School 3, showing the comparison between observed and simulated data.
 
 <p align="center">
@@ -123,7 +150,7 @@ Similarly, the posterior predictive check is performed for School 3, showing the
 </p>
 
 
-### 4. **Probability of Ordering the Means**
+### 5. **Probability of Ordering the Means**
 In addition to calculating the posterior means and credible intervals, we are also interested in comparing the means of the schools. Specifically, we calculate the probabilities of different orderings of the means for the schools.
 
 - **Pairwise Probability Calculations:**
