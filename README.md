@@ -48,6 +48,19 @@ where:
 - $\bar{y}$ is the sample mean for the school.
 - $k_0$ is the prior weight (which determines how much the prior influences the posterior).
 
+```
+#posterior mean for s1
+n1 <- length(s1)
+y_bar1 <- mean(s1)
+var1 <- var(s1)
+mu_1 <- (k0 * mu0 + n1 * y_bar1)/(k0 + n1)
+```
+
+<p align="center">
+<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/means.jpg" alt="Posterior Predictive Check for School 1" style="width: 250px;" />
+</p>
+
+
 ### 3. **95% Credible Intervals (Monte Carlo Simulation)**
 To quantify the uncertainty in the posterior mean estimates, we use Monte Carlo simulations to generate posterior samples. This is done by sampling from the posterior distributions of the mean and variance.
 
@@ -67,12 +80,27 @@ $$\sigma^2_{\text{posterior}} = \frac{1}{n + k_0}$$
 
     This provides a range of plausible values for each school’s mean study time, taking into account both the prior beliefs and the observed data.
 
+```
+# 95% CI for s1 theta (mean)
+set.seed(100)
+vn1 <- v0 + n1 
+kn1 <- k0 + n1
+s1n1 <- (1/vn1) * (v0 * var0 + (n1-1) * var1 + ((k0 * n1 )/kn1) * (y_bar1 - mu0)^2 )
+s1_postsample <- 1/rgamma(10000, vn1/2, vn1 * s1n1 / 2)
+theta1_postsample <- rnorm(10000, mu_1, sqrt(s1_postsample/(n1 + k0)))
+```
+
 <p align="center">
-<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/Graph1.jpg" alt="Posterior Predictive Check for School 1" style="width: 600px;" />
+<img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/Graph1.jpg" alt="Posterior Predictive Check for School 1" style="width: 775px;" />
 </p>
 
 #### Posterior Predictive Check - Graph 1: School 1
 To assess the quality of the model fit to School 1's data, we plot the posterior predictive check alongside the observed data for School 1.
+
+```
+# Generate posterior predictive samples for School 1 (mean and variance)
+theta1_pred <- rnorm(10000, mu_1, sqrt(s1_postsample/(n1 + k0)))
+```
 
 <p align="center">
 <img src="https://github.com/RoryQo/Evaluating-Study-Time-Differences-Across-Schools/blob/main/Figures/s1.jpg" alt="Posterior Predictive Check for School 1" style="width: 600px;" />
