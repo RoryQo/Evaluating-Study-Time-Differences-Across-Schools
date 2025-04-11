@@ -1,7 +1,7 @@
 # Evaluating Study Time Differences Across Schools - Bayesian Analysis
 
 <table align="center">
-  <tr>
+  <tr> 
     <td colspan="2" align="center" style="background-color: white; color: black;"><strong>Table of Contents</strong></td>
   </tr>
   <tr>
