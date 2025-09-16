@@ -1,4 +1,4 @@
-# Evaluating Study Time Differences Across Schools - Bayesian Analysis 
+# Evaluating Study Time Differences Across Schools - Bayesian Analysis  
   
 <table align="center"> 
   <tr>  
